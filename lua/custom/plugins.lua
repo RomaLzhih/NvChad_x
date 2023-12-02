@@ -29,6 +29,14 @@ local plugins = {
   },
 
   {
+    "aserowy/tmux.nvim",
+    config = function()
+      require("tmux").setup()
+    end,
+    lazy = false,
+  },
+
+  {
     "nvim-treesitter/nvim-treesitter",
     opts = overrides.treesitter,
   },
@@ -51,24 +59,6 @@ local plugins = {
       require("better_escape").setup()
     end,
   },
-
-  -- {
-  --   "shaunsingh/nord.nvim",
-  --   config = function()
-  --     require("nord").setup {
-  --       styles = {
-  --         -- Style to be applied to different syntax groups
-  --         -- Value is any valid attr-list value for `:help nvim_set_hl`
-  --         comments = { italic = true },
-  --         keywords = { italic = true },
-  --         functions = { italic = true },
-  --         variables = { italic = true },
-  --         TSKeyword = { italic = true },
-  --         TSFunction = { italic = true },
-  --       },
-  --     }
-  --   end,
-  -- },
 
   {
     "junegunn/fzf",
