@@ -51,15 +51,6 @@ local plugins = {
     enable = false,
   },
 
-  -- Install a plugin
-  {
-    "max397574/better-escape.nvim",
-    event = "InsertEnter",
-    config = function()
-      require("better_escape").setup()
-    end,
-  },
-
   {
     "junegunn/fzf",
     build = "./install --bin",
@@ -111,14 +102,6 @@ local plugins = {
   },
 
   {
-    "anuvyklack/pretty-fold.nvim",
-    config = function()
-      require("pretty-fold").setup()
-    end,
-    lazy = false,
-  },
-
-  {
     "abecodes/tabout.nvim",
     config = function()
       require("tabout").setup()
@@ -147,73 +130,91 @@ local plugins = {
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {},
+    lazy = false,
+  },
+
+  {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
-      {
-        signs = true, -- show icons in the signs column
-        sign_priority = 8, -- sign priority
-        -- keywords recognized as todo comments
-        keywords = {
-          FIX = {
-            icon = " ", -- icon used for the sign, and in search results
-            color = "error", -- can be a hex color, or a named color (see below)
-            alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }, -- a set of other keywords that all map to this FIX keywords
-            -- signs = false, -- configure signs for some keywords individually
-          },
-          TODO = { icon = " ", color = "info" },
-          HACK = { icon = " ", color = "warning" },
-          WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
-          PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
-          NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
-          TEST = { icon = "⏲ ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
-        },
-        gui_style = {
-          fg = "NONE", -- The gui style to use for the fg highlight group.
-          bg = "BOLD", -- The gui style to use for the bg highlight group.
-        },
-        merge_keywords = true, -- when true, custom keywords will be merged with the defaults
-        -- highlighting of the line containing the todo comment
-        -- * before: highlights before the keyword (typically comment characters)
-        -- * keyword: highlights of the keyword
-        -- * after: highlights after the keyword (todo text)
-        highlight = {
-          multiline = true, -- enable multine todo comments
-          multiline_pattern = "^.", -- lua pattern to match the next multiline from the start of the matched keyword
-          multiline_context = 10, -- extra lines that will be re-evaluated when changing a line
-          before = "", -- "fg" or "bg" or empty
-          keyword = "wide", -- "fg", "bg", "wide", "wide_bg", "wide_fg" or empty. (wide and wide_bg is the same as bg, but will also highlight surrounding characters, wide_fg acts accordingly but with fg)
-          after = "fg", -- "fg" or "bg" or empty
-          pattern = [[.*<(KEYWORDS)\s*:]], -- pattern or table of patterns, used for highlighting (vim regex)
-          comments_only = true, -- uses treesitter to match keywords in comments only
-          max_line_len = 400, -- ignore lines longer than this
-          exclude = {}, -- list of file types to exclude highlighting
-        },
-        -- list of named colors where we try to extract the guifg from the
-        -- list of highlight groups or use the hex color if hl not found as a fallback
-        colors = {
-          error = { "DiagnosticError", "ErrorMsg", "#DC2626" },
-          warning = { "DiagnosticWarn", "WarningMsg", "#FBBF24" },
-          info = { "DiagnosticInfo", "#2563EB" },
-          hint = { "DiagnosticHint", "#10B981" },
-          default = { "Identifier", "#7C3AED" },
-          test = { "Identifier", "#FF00FF" },
-        },
-        search = {
-          command = "rg",
-          args = {
-            "--color=never",
-            "--no-heading",
-            "--with-filename",
-            "--line-number",
-            "--column",
-          },
-          -- regex that will be used to match keywords.
-          -- don't replace the (KEYWORDS) placeholder
-          pattern = [[\b(KEYWORDS):]], -- ripgrep regex
-          -- pattern = [[\b(KEYWORDS)\b]], -- match without the extra colon. You'll likely get false positives
-        },
-      },
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
     },
     lazy = false,
+  },
+
+  {
+    "kevinhwang91/nvim-ufo",
+    dependencies = {
+      "kevinhwang91/promise-async",
+      {
+        "luukvbaal/statuscol.nvim",
+        config = function()
+          local builtin = require "statuscol.builtin"
+          require("statuscol").setup {
+            relculright = true,
+            segments = {
+              { text = { builtin.foldfunc }, click = "v:lua.ScFa" },
+              { text = { "%s" }, click = "v:lua.ScSa" },
+              { text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
+            },
+          }
+        end,
+      },
+    },
+    event = "BufReadPost",
+    opts = {
+      provider_selector = function()
+        return { "treesitter", "indent" }
+      end,
+    },
+    config = function(_, opts)
+      local handler = function(virtText, lnum, endLnum, width, truncate)
+        local newVirtText = {}
+        local totalLines = vim.api.nvim_buf_line_count(0)
+        local foldedLines = endLnum - lnum
+        local suffix = (" 󰁂 %dL 󰉸 %d%% "):format(foldedLines, foldedLines / totalLines * 100)
+        local sufWidth = vim.fn.strdisplaywidth(suffix)
+        local targetWidth = width - sufWidth
+        local curWidth = 0
+        for _, chunk in ipairs(virtText) do
+          local chunkText = chunk[1]
+          local chunkWidth = vim.fn.strdisplaywidth(chunkText)
+          if targetWidth > curWidth + chunkWidth then
+            table.insert(newVirtText, chunk)
+          else
+            chunkText = truncate(chunkText, targetWidth - curWidth)
+            local hlGroup = chunk[2]
+            table.insert(newVirtText, { chunkText, hlGroup })
+            chunkWidth = vim.fn.strdisplaywidth(chunkText)
+            -- str width returned from truncate() may less than 2nd argument, need padding
+            if curWidth + chunkWidth < targetWidth then
+              suffix = suffix .. (" "):rep(targetWidth - curWidth - chunkWidth)
+            end
+            break
+          end
+          curWidth = curWidth + chunkWidth
+        end
+        local rAlignAppndx = math.max(math.min(vim.opt.textwidth["_value"], width - 1) - curWidth - sufWidth, 0)
+        suffix = (" "):rep(rAlignAppndx) .. suffix
+        table.insert(newVirtText, { suffix, "MoreMsg" })
+        return newVirtText
+      end
+      opts["fold_virt_text_handler"] = handler
+      require("ufo").setup(opts)
+      vim.keymap.set("n", "zR", require("ufo").openAllFolds)
+      vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
+      vim.keymap.set("n", "zr", require("ufo").openFoldsExceptKinds)
+      vim.keymap.set("n", "K", function()
+        local winid = require("ufo").peekFoldedLinesUnderCursor()
+        if not winid then
+          -- vim.lsp.buf.hover()
+          vim.cmd [[ Lspsaga hover_doc ]]
+        end
+      end)
+    end,
   },
   -- To make a plugin not be loaded
   -- {

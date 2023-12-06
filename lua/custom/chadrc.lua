@@ -6,7 +6,7 @@ local highlights = require "custom.highlights"
 
 M.ui = {
   theme = "nord",
-  theme_toggle = { "nord" },
+  theme_toggle = { "nord", "catppuccin", "github_dark", "monekai", "onenord", "palenight" },
   hl_override = highlights.override,
   hl_add = highlights.add,
 }

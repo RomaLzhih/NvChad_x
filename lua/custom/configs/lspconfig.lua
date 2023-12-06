@@ -6,6 +6,7 @@ local lspconfig = require "lspconfig"
 -- if you just want default config for the servers then put them in a table
 local servers = { "bashls", "pyright", "clangd" }
 
+
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
@@ -24,5 +25,5 @@ require("lspconfig").clangd.setup {
     "--offset-encoding=utf-16",
   },
 }
--- 
+--
 -- lspconfig.pyright.setup { blabla}
