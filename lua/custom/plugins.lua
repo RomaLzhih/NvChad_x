@@ -253,9 +253,18 @@ local plugins = {
 
       lint.linters_by_ft = {
         python = { "pylint" },
-        cpp = { "clangtidy" },
-        bash = {"shellcheck"},
+        cpp = { "clangtidy", "cppcheck" },
+        bash = { "shellcheck" },
       }
+
+      -- local cppcheck = require("lint").linters.cppcheck
+      -- cppcheck.args = {
+      --   "--enable=warning,style,performance,information",
+      --   "--language=c++",
+      --   "--inline-suppr",
+      --   "--cppcheck-build-dir=/home/zmen002/neovim/build/",
+      --   "--template={file}:{line}:{column}: [{id}] {severity}: {message}",
+      -- }
 
       local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
       vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
