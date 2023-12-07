@@ -20,7 +20,8 @@ M.general = {
     -- ["<C-f>"] = { "mtgg=G\'t", "format file"},
     ["<C-f>"] = {
       function()
-        vim.lsp.buf.format { async = true }
+        -- vim.lsp.buf.format { async = true }
+        require("conform").format { async = true, lsp_fallback = true }
       end,
       "LSP formatting",
     },
@@ -30,7 +31,6 @@ M.general = {
       "Fold code by treesitter",
     },
     ["<A-q>"] = { "zA", "Toggle all folding under cursor" },
-
 
     -- ["<A-a>"] = { "<A-t>za", "Toggle one folding under cursor " },
     ["<A-e>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
