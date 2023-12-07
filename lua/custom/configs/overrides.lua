@@ -38,7 +38,6 @@ M.mason = {
     "lua-language-server",
     "stylua",
     "beautysh",
-    "black",
     -- c/cpp stuff
     "clangd",
     "bash-language-server",

@@ -9,12 +9,12 @@ local plugins = {
     "neovim/nvim-lspconfig",
     dependencies = {
       -- format & linting
-      {
-        "nvimtools/none-ls.nvim",
-        config = function()
-          require "custom.configs.null-ls"
-        end,
-      },
+      -- {
+      --   "nvimtools/none-ls.nvim",
+      --   config = function()
+      --     require "custom.configs.null-ls"
+      --   end,
+      -- },
     },
     config = function()
       require "plugins.configs.lspconfig"
@@ -244,6 +244,32 @@ local plugins = {
     end,
   },
 
+  {
+    "mfussenegger/nvim-lint",
+    lazy = true,
+    event = { "BufReadPre", "BufNewFile" }, -- to disable, comment this out
+    config = function()
+      local lint = require "lint"
+
+      lint.linters_by_ft = {
+        python = { "pylint" },
+        cpp = { "clangtidy" },
+        bash = {"shellcheck"},
+      }
+
+      local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
+      vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+        group = lint_augroup,
+        callback = function()
+          lint.try_lint()
+        end,
+      })
+
+      vim.keymap.set("n", "<leader>l", function()
+        lint.try_lint()
+      end, { desc = "Trigger linting for current file" })
+    end,
+  },
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
