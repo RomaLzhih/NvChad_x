@@ -18,6 +18,8 @@ local sources = {
   b.formatting.beautysh,
   --bash
   b.formatting.black,
+  --bash
+  b.formatting.styler,
 }
 
 null_ls.setup {

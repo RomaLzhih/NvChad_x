@@ -206,6 +206,8 @@ local plugins = {
           python = { "black" },
           cpp = { "clang-format" },
           bash = { "beautysh" },
+          -- r = { "styler" },
+          -- rmd = { "styler" },
         },
         format_on_save = {
           -- These options will be passed to conform.format()
@@ -313,6 +315,12 @@ local plugins = {
         hop.hint_char2 { direction = directions.BEFORE_CURSOR, hint_offset = 1 }
       end, { remap = true })
     end,
+    lazy = false,
+  },
+
+  -- NOTE: Nvim-R
+  {
+    "jalvesaq/Nvim-R",
     lazy = false,
   },
 

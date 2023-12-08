@@ -24,7 +24,7 @@ M.general = {
         -- vim.lsp.buf.format { async = true }
         require("conform").format { async = true, lsp_fallback = true }
       end,
-      "LSP formatting",
+      "conform formatting",
     },
 
     -- NOTE: operation
@@ -44,15 +44,15 @@ M.general = {
     ["/"] = { "<Plug>(easymotion-sn)", "easy motion n char search" },
 
     -- NOTE: lspsaga
-    ["gic"] = { "<cmd> Lspsaga incoming_calls <CR>", "lsp saga incoming calls" },
-    ["goc"] = { "<cmd> Lspsaga outgoing_calls <CR>", "lsp saga outgoing calls" },
-    ["gca"] = { "<cmd> Lspsaga code_action <CR>", "lsp saga code action" },
-    ["gpd"] = { "<cmd> Lspsaga peek_definition <CR>", "lsp saga peak definition" },
-    ["gpt"] = { "<cmd> Lspsaga peek_type_definition <CR>", "lsp saga peak type definition" },
-    ["gfd"] = { "<cmd> Lspsaga finder <CR>", "lsp saga finder" },
-    ["gol"] = { "<cmd> Lspsaga outline <CR>", "lsp saga outline" },
-    ["grn"] = { "<cmd> Lspsaga rename <CR>", "lsp saga rename" },
-    ["gwd"] = { "<cmd> Lspsaga show_workspace_diagnostics <CR>", "lsp saga rename" },
+    ["<leader>ic"] = { "<cmd> Lspsaga incoming_calls <CR>", "lsp saga incoming calls" },
+    ["<leader>oc"] = { "<cmd> Lspsaga outgoing_calls <CR>", "lsp saga outgoing calls" },
+    ["<leader>ca"] = { "<cmd> Lspsaga code_action <CR>", "lsp saga code action" },
+    ["<leader>pd"] = { "<cmd> Lspsaga peek_definition <CR>", "lsp saga peak definition" },
+    ["<leader>pt"] = { "<cmd> Lspsaga peek_type_definition <CR>", "lsp saga peak type definition" },
+    ["<leader>fd"] = { "<cmd> Lspsaga finder <CR>", "lsp saga finder" },
+    ["<leader>ol"] = { "<cmd> Lspsaga outline <CR>", "lsp saga outline" },
+    ["<leader>rn"] = { "<cmd> Lspsaga rename <CR>", "lsp saga rename" },
+    ["<leader>wd"] = { "<cmd> Lspsaga show_workspace_diagnostics <CR>", "lsp saga rename" },
   },
 
   i = {

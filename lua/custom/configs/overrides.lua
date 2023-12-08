@@ -12,6 +12,7 @@ M.treesitter = {
     "c",
     "cpp",
     "python",
+    "r",
     "bash",
     "markdown",
     "markdown_inline",
@@ -42,6 +43,7 @@ M.mason = {
     "clangd",
     "bash-language-server",
     "pyright",
+    -- "r_language_server",
   },
 }
 
