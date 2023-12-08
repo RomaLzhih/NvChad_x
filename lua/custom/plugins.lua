@@ -5,6 +5,7 @@ local plugins = {
 
   -- Override plugin definition options
 
+  -- NOTE: nvim-lspconfig
   {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -15,6 +16,12 @@ local plugins = {
       --     require "custom.configs.null-ls"
       --   end,
       -- },
+      {
+        "nvimdev/lspsaga.nvim",
+        config = function()
+          require("lspsaga").setup {}
+        end,
+      },
     },
     config = function()
       require "plugins.configs.lspconfig"
@@ -22,12 +29,14 @@ local plugins = {
     end, -- Override to setup mason-lspconfig
   },
 
+  -- NOTE: mason
   -- override plugin configs
   {
     "williamboman/mason.nvim",
     opts = overrides.mason,
   },
 
+  -- NOTE: tmux.nvim
   {
     "aserowy/tmux.nvim",
     config = function()
@@ -36,27 +45,32 @@ local plugins = {
     lazy = false,
   },
 
+  -- NOTE: nvim-treesitter
   {
     "nvim-treesitter/nvim-treesitter",
     opts = overrides.treesitter,
   },
 
+  -- NOTE: nvim-tree
   {
     "nvim-tree/nvim-tree.lua",
     opts = overrides.nvimtree,
   },
 
+  -- NOTE: telescope
   {
     "nvim-telescope/telescope.nvim",
     enable = false,
   },
 
+  -- NOTE: fzf
   {
     "junegunn/fzf",
     build = "./install --bin",
     lazy = false,
   },
 
+  -- NOTE: dressing
   {
     "stevearc/dressing.nvim",
     config = function()
@@ -65,6 +79,7 @@ local plugins = {
     lazy = true,
   },
 
+  -- NOTE: neoscroll.nvim
   {
     "karb94/neoscroll.nvim",
     config = function()
@@ -73,6 +88,7 @@ local plugins = {
     lazy = false,
   },
 
+  -- NOTE: alpha-nvim
   {
     "goolord/alpha-nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -82,6 +98,7 @@ local plugins = {
     lazy = false,
   },
 
+  -- NOTE: mini.cursorword
   {
     "echasnovski/mini.cursorword",
     version = "*",
@@ -91,16 +108,19 @@ local plugins = {
     lazy = false,
   },
 
+  -- NOTE: vim-easymotion
   {
     "easymotion/vim-easymotion",
     lazy = false,
   },
 
+  -- NOTE: vim-visual-multi
   {
     "mg979/vim-visual-multi",
     lazy = false,
   },
 
+  -- NOTE: tabout.nvim
   {
     "abecodes/tabout.nvim",
     config = function()
@@ -109,6 +129,7 @@ local plugins = {
     lazy = false,
   },
 
+  -- NOTE: fzf-lua
   {
     "ibhagwan/fzf-lua",
     -- optional for icon support
@@ -120,6 +141,7 @@ local plugins = {
     lazy = false,
   },
 
+  -- NOTE: playground
   {
     "nvim-treesitter/playground",
     config = function()
@@ -127,6 +149,7 @@ local plugins = {
     end,
   },
 
+  -- NOTE: todo-comments
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -134,17 +157,7 @@ local plugins = {
     lazy = false,
   },
 
-  {
-    "folke/trouble.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    },
-    lazy = false,
-  },
-
+  -- NOTE: nvim-ufo
   {
     "kevinhwang91/nvim-ufo",
     dependencies = {
@@ -181,6 +194,7 @@ local plugins = {
     end,
   },
 
+  -- NOTE: conform
   {
     "stevearc/conform.nvim",
     opts = {},
@@ -200,8 +214,10 @@ local plugins = {
         },
       }
     end,
+    lazy = false,
   },
 
+  -- NOTE: Noice
   {
     "folke/noice.nvim",
     event = "VeryLazy",
@@ -244,6 +260,7 @@ local plugins = {
     end,
   },
 
+  -- NOTE: Nvim-lint
   {
     "mfussenegger/nvim-lint",
     lazy = true,
@@ -257,15 +274,6 @@ local plugins = {
         bash = { "shellcheck" },
       }
 
-      -- local cppcheck = require("lint").linters.cppcheck
-      -- cppcheck.args = {
-      --   "--enable=warning,style,performance,information",
-      --   "--language=c++",
-      --   "--inline-suppr",
-      --   "--cppcheck-build-dir=/home/zmen002/neovim/build/",
-      --   "--template={file}:{line}:{column}: [{id}] {severity}: {message}",
-      -- }
-
       local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
       vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
         group = lint_augroup,
@@ -273,12 +281,41 @@ local plugins = {
           lint.try_lint()
         end,
       })
-
-      vim.keymap.set("n", "<leader>l", function()
-        lint.try_lint()
-      end, { desc = "Trigger linting for current file" })
     end,
   },
+
+  -- NOTE: nvim-bqf
+  {
+    "kevinhwang91/nvim-bqf",
+    ft = "qf",
+  },
+
+  -- NOTE: hop
+  {
+    "phaazon/hop.nvim",
+    branch = "v2", -- optional but strongly recommended
+    config = function()
+      require("hop").setup {}
+    end,
+    init = function()
+      local hop = require "hop"
+      local directions = require("hop.hint").HintDirection
+      vim.keymap.set("", "f", function()
+        hop.hint_char2 { direction = directions.AFTER_CURSOR }
+      end, { remap = true })
+      vim.keymap.set("", "F", function()
+        hop.hint_char2 { direction = directions.BEFORE_CURSOR }
+      end, { remap = true })
+      vim.keymap.set("", "t", function()
+        hop.hint_char2 { direction = directions.AFTER_CURSOR, hint_offset = -1 }
+      end, { remap = true })
+      vim.keymap.set("", "T", function()
+        hop.hint_char2 { direction = directions.BEFORE_CURSOR, hint_offset = 1 }
+      end, { remap = true })
+    end,
+    lazy = false,
+  },
+
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",

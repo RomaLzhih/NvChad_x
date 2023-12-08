@@ -17,7 +17,8 @@ M.disabled = {
 M.general = {
   n = {
     ["<C-a>"] = { "ggVG <CR>", "Select all" },
-    -- ["<C-f>"] = { "mtgg=G\'t", "format file"},
+
+    -- NOTE: formatting
     ["<C-f>"] = {
       function()
         -- vim.lsp.buf.format { async = true }
@@ -25,18 +26,33 @@ M.general = {
       end,
       "LSP formatting",
     },
+
+    -- NOTE: operation
     ["<C-u>"] = { "<C-r>", "Revert undo" },
+
+    -- NOTE: fold
     ["<A-t>"] = {
       "<cmd> set foldmethod=expr <CR> <cmd> set foldexpr=nvim_treesitter#foldexpr() <CR>",
       "Fold code by treesitter",
     },
     ["<A-q>"] = { "zA", "Toggle all folding under cursor" },
-
-    -- ["<A-a>"] = { "<A-t>za", "Toggle one folding under cursor " },
     ["<A-e>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
+
+    -- NOTE: search
     ["<leader>f"] = { "<cmd> FzfLua grep <CR>", "fzf Rg search" },
-    ["<leader>p"] = { "<cmd> FzfLua files <CR>", "fzf Git-files search" },
+    ["<leader>p"] = { "<cmd> FzfLua files <CR>", "fzf Gitfiles search" },
     ["/"] = { "<Plug>(easymotion-sn)", "easy motion n char search" },
+
+    -- NOTE: lspsaga
+    ["gic"] = { "<cmd> Lspsaga incoming_calls <CR>", "lsp saga incoming calls" },
+    ["goc"] = { "<cmd> Lspsaga outgoing_calls <CR>", "lsp saga outgoing calls" },
+    ["gca"] = { "<cmd> Lspsaga code_action <CR>", "lsp saga code action" },
+    ["gpd"] = { "<cmd> Lspsaga peek_definition <CR>", "lsp saga peak definition" },
+    ["gpt"] = { "<cmd> Lspsaga peek_type_definition <CR>", "lsp saga peak type definition" },
+    ["gfd"] = { "<cmd> Lspsaga finder <CR>", "lsp saga finder" },
+    ["gol"] = { "<cmd> Lspsaga outline <CR>", "lsp saga outline" },
+    ["grn"] = { "<cmd> Lspsaga rename <CR>", "lsp saga rename" },
+    ["gwd"] = { "<cmd> Lspsaga show_workspace_diagnostics <CR>", "lsp saga rename" },
   },
 
   i = {
