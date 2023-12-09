@@ -12,3 +12,13 @@ vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decr
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+
+if vim.g.neovide then
+  vim.o.guifont = "DankMono Nerd Font:h13"
+  vim.g.neovide_padding_top = 0
+  vim.g.neovide_padding_bottom = 0
+  vim.g.neovide_padding_right = 0
+  vim.g.neovide_padding_left = 0
+  vim.g.neovide_transparency = 0.9
+  vim.g.neovide_cursor_vfx_mode = "pixiedust"
+end
