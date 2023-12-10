@@ -60,7 +60,8 @@ local plugins = {
   -- NOTE: telescope
   {
     "nvim-telescope/telescope.nvim",
-    enable = false,
+    -- enable = false,
+    lazy = true,
   },
 
   -- NOTE: fzf
@@ -321,6 +322,9 @@ local plugins = {
   -- NOTE: Nvim-R
   {
     "jalvesaq/Nvim-R",
+    config = function()
+      R_assign = false
+    end,
     lazy = false,
   },
 
