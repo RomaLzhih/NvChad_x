@@ -10,12 +10,12 @@ local plugins = {
     "neovim/nvim-lspconfig",
     dependencies = {
       -- format & linting
-      -- {
-      --   "nvimtools/none-ls.nvim",
-      --   config = function()
-      --     require "custom.configs.null-ls"
-      --   end,
-      -- },
+      {
+        "nvimtools/none-ls.nvim",
+        config = function()
+          require "custom.configs.null-ls"
+        end,
+      },
       {
         "nvimdev/lspsaga.nvim",
         config = function()
@@ -205,7 +205,7 @@ local plugins = {
           lua = { "stylua" },
           -- Conform will run multiple formatters sequentially
           python = { "black" },
-          cpp = { "clang-format" },
+          -- cpp = { "clang-format" },
           bash = { "beautysh" },
           -- r = { "styler" },
           -- rmd = { "styler" },
