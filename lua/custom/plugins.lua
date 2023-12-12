@@ -272,7 +272,6 @@ local plugins = {
       local lint = require "lint"
 
       lint.linters_by_ft = {
-        python = { "pylint" },
         cpp = { "clangtidy", "cppcheck" },
         bash = { "shellcheck" },
       }
@@ -328,6 +327,15 @@ local plugins = {
     lazy = false,
   },
 
+  -- NOTE: vim latex
+  {
+    "lervag/vimtex",
+    init = function()
+      vim.g.vimtex_view_general_viewer = "SumatraPDF"
+      vim.g.vimtex_view_general_options = "-reuse-instance -forward-search @tex @line @pdf"
+    end,
+    lazy = false,
+  },
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
