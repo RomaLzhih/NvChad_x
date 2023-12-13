@@ -306,10 +306,10 @@ local plugins = {
         hop.hint_char1 { direction = directions.AFTER_CURSOR }
       end, { remap = true })
       vim.keymap.set("", "F", function()
-        hop.hint_char2 { direction = directions.BEFORE_CURSOR }
+        hop.hint_char2 { direction = directions.AFTER_CURSOR }
       end, { remap = true })
       vim.keymap.set("", "t", function()
-        hop.hint_char1 { direction = directions.AFTER_CURSOR }
+        hop.hint_char1 { direction = directions.BEFORE_CURSOR }
       end, { remap = true })
       vim.keymap.set("", "T", function()
         hop.hint_char2 { direction = directions.BEFORE_CURSOR }
@@ -336,9 +336,50 @@ local plugins = {
       vim.g.vimtex_view_method = "sioyek"
       vim.g.vimtex_quickfix_open_on_warning = 0
       vim.cmd "let g:vimtex_compiler_latexmk = {'continuous':'0'}"
+      vim.g.tex_use_latexmk = 0
+      vim.api.nvim_exec(
+        [[
+        let s:pdflatex = 'pdflatex -file-line-error -interaction=nonstopmode ' .
+              \ '-halt-on-error -synctex=1 -output-directory=%:h %'
+        let s:latexmk = 'latexmk -pdf -output-directory=%:h %'
+        
+        function! s:TexToggleLatexmk() abort
+          if g:tex_use_latexmk  
+            let g:tex_use_latexmk = 0
+          else  
+            let g:tex_use_latexmk = 1
+          endif
+          call s:TexSetMakePrg()  
+        endfunction
+        
+        function! s:TexSetMakePrg() abort
+          if g:tex_use_latexmk
+            let &l:makeprg = expand(s:latexmk)
+          else
+            let &l:makeprg = expand(s:pdflatex)
+          endif
+        endfunction
+        
+        nmap <localleader>tl <Plug>TexToggleLatexmk
+        nnoremap <script> <Plug>TexToggleLatexmk <SID>TexToggleLatexmk
+        nnoremap <SID>TexToggleLatexmk :call <SID>TexToggleLatexmk()<CR>
+        ]],
+        false
+      )
       -- vim.g.vimtex_compiler_method = "pdflatex"
     end,
     lazy = false,
+  },
+
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup {
+        -- Configuration here, or leave empty to use defaults
+      }
+    end,
   },
   -- To make a plugin not be loaded
   -- {
