@@ -300,19 +300,20 @@ local plugins = {
       require("hop").setup {}
     end,
     init = function()
+      -- place this in one of your configuration file(s)
       local hop = require "hop"
       local directions = require("hop.hint").HintDirection
       vim.keymap.set("", "f", function()
         hop.hint_char1 { direction = directions.AFTER_CURSOR }
       end, { remap = true })
       vim.keymap.set("", "F", function()
-        hop.hint_char2 { direction = directions.AFTER_CURSOR }
-      end, { remap = true })
-      vim.keymap.set("", "t", function()
         hop.hint_char1 { direction = directions.BEFORE_CURSOR }
       end, { remap = true })
+      vim.keymap.set("", "t", function()
+        hop.hint_char1 { direction = directions.AFTER_CURSOR, hint_offset = -1 }
+      end, { remap = true })
       vim.keymap.set("", "T", function()
-        hop.hint_char2 { direction = directions.BEFORE_CURSOR }
+        hop.hint_char1 { direction = directions.BEFORE_CURSOR, hint_offset = 1 }
       end, { remap = true })
     end,
     lazy = false,
@@ -381,19 +382,47 @@ local plugins = {
       }
     end,
   },
+
+  {
+    "soulis-1256/hoverhints.nvim",
+    config = function()
+      require("hoverhints").setup {}
+    end,
+    lazy = false,
+  },
+
+  -- Lazy
+  {
+    "piersolenski/wtf.nvim",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+    },
+    opts = {},
+    keys = {
+      {
+        mode = { "n" },
+        "gW",
+        function()
+          require("wtf").search()
+        end,
+        desc = "Search diagnostic with Google",
+      },
+    },
+  },
+
+  {
+    "chentoast/marks.nvim",
+    config = function()
+      require("marks").setup {}
+    end,
+    lazy = false,
+  },
+
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
   --   enabled = false
   -- },
-
-  -- All NvChad plugins are lazy-loaded by default
-  -- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
-  -- If you want a plugin to load on startup, add `lazy = false` to a plugin spec, for example
-  -- {
-  --   "mg979/vim-visual-multi",
-  --   lazy = false,
-  -- }
 }
 
 return plugins
