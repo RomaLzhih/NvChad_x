@@ -207,6 +207,7 @@ local plugins = {
           python = { "black" },
           -- cpp = { "clang-format" },
           bash = { "beautysh" },
+          shell = { "shfmt" },
           -- r = { "styler" },
           -- rmd = { "styler" },
         },

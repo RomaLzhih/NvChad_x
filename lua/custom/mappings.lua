@@ -17,6 +17,8 @@ M.disabled = {
 M.general = {
   n = {
     ["<C-a>"] = { "ggVG <CR>", "Select all" },
+    ["<A-Up>"] = { "ddkP", "Move line up" },
+    ["<A-Down>"] = { "ddp", "Move line below" },
 
     -- NOTE: formatting
     ["<C-f>"] = {

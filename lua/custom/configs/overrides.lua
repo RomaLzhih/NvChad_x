@@ -4,11 +4,6 @@ M.treesitter = {
   ensure_installed = {
     "vim",
     "lua",
-    "html",
-    "css",
-    "javascript",
-    "typescript",
-    "tsx",
     "c",
     "cpp",
     "python",
@@ -43,6 +38,7 @@ M.mason = {
     "clangd",
     "bash-language-server",
     "pyright",
+    "shfmt",
     -- "r_language_server",
   },
 }
