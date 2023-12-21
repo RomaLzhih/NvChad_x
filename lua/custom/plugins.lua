@@ -64,13 +64,6 @@ local plugins = {
     lazy = true,
   },
 
-  -- NOTE: fzf
-  {
-    "junegunn/fzf",
-    build = "./install --bin",
-    lazy = false,
-  },
-
   -- NOTE: dressing
   {
     "stevearc/dressing.nvim",
@@ -126,18 +119,6 @@ local plugins = {
     "abecodes/tabout.nvim",
     config = function()
       require("tabout").setup()
-    end,
-    lazy = false,
-  },
-
-  -- NOTE: fzf-lua
-  {
-    "ibhagwan/fzf-lua",
-    -- optional for icon support
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      -- calling `setup` is optional for customization
-      require("fzf-lua").setup {}
     end,
     lazy = false,
   },

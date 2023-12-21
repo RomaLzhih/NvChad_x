@@ -41,8 +41,6 @@ M.general = {
     ["<A-e>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
 
     -- NOTE: search
-    ["<leader>f"] = { "<cmd> FzfLua grep <CR>", "fzf Rg search" },
-    ["<leader>p"] = { "<cmd> FzfLua files <CR>", "fzf Gitfiles search" },
     ["/"] = { "<Plug>(easymotion-sn)", "easy motion n char search" },
 
     -- NOTE: lspsaga
