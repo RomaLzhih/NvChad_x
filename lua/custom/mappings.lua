@@ -19,6 +19,15 @@ M.general = {
     ["<C-a>"] = { "ggVG <CR>", "Select all" },
     ["<A-Up>"] = { "ddkP", "Move line up" },
     ["<A-Down>"] = { "ddp", "Move line below" },
+    ["<A-e>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
+
+    -- NOTE: Nvterm
+    ["<A-x>"] = {
+      function()
+        require("nvterm.terminal").toggle "horizontal"
+      end,
+      "Toggle horizontal term",
+    },
 
     -- NOTE: formatting
     ["<C-f>"] = {
@@ -33,12 +42,7 @@ M.general = {
     ["<C-u>"] = { "<C-r>", "Revert undo" },
 
     -- NOTE: fold
-    ["<A-t>"] = {
-      "<cmd> set foldmethod=expr <CR> <cmd> set foldexpr=nvim_treesitter#foldexpr() <CR>",
-      "Fold code by treesitter",
-    },
     ["<A-q>"] = { "zA", "Toggle all folding under cursor" },
-    ["<A-e>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
 
     -- NOTE: search
     ["/"] = { "<Plug>(easymotion-sn)", "easy motion n char search" },
