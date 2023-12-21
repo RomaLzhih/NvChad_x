@@ -374,6 +374,7 @@ local plugins = {
     lazy = false,
   },
 
+  -- NOTE: surrounds
   {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
@@ -385,15 +386,7 @@ local plugins = {
     end,
   },
 
-  {
-    "soulis-1256/hoverhints.nvim",
-    config = function()
-      require("hoverhints").setup {}
-    end,
-    lazy = false,
-  },
-
-  -- Lazy
+  --NOTE: search wigh google
   {
     "piersolenski/wtf.nvim",
     dependencies = {
@@ -412,11 +405,17 @@ local plugins = {
     },
   },
 
+  -- NOTE: mark
   {
     "chentoast/marks.nvim",
     config = function()
       require("marks").setup {}
     end,
+    lazy = false,
+  },
+
+  {
+    "mechatroner/rainbow_csv",
     lazy = false,
   },
 
