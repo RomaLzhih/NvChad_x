@@ -39,6 +39,7 @@ M.mason = {
     "bash-language-server",
     "pyright",
     "shfmt",
+    "ltex-ls",
     -- "r_language_server",
   },
 }

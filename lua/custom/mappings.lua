@@ -20,6 +20,7 @@ M.general = {
     ["<A-Up>"] = { "ddkP", "Move line up" },
     ["<A-Down>"] = { "ddp", "Move line below" },
     ["<A-e>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
+    ["<leader>pl"] = { "<cmd> set spell! <CR>", "Toggle spell check" },
 
     -- NOTE: Nvterm
     ["<A-x>"] = {
