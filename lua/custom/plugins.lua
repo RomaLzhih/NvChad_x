@@ -189,6 +189,7 @@ local plugins = {
           cpp = { "clang-format" },
           bash = { "beautysh" },
           shell = { "shfmt" },
+          sh = { "shfmt" },
           -- r = { "styler" },
           -- rmd = { "styler" },
         },
