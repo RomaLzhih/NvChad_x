@@ -186,7 +186,7 @@ local plugins = {
           lua = { "stylua" },
           -- Conform will run multiple formatters sequentially
           python = { "black" },
-          -- cpp = { "clang-format" },
+          cpp = { "clang-format" },
           bash = { "beautysh" },
           shell = { "shfmt" },
           -- r = { "styler" },
