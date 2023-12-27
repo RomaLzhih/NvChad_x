@@ -64,6 +64,13 @@ local plugins = {
     lazy = true,
   },
 
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = {},
+    lazy = false,
+  },
+
   -- NOTE: dressing
   {
     "stevearc/dressing.nvim",
