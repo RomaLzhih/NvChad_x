@@ -7,7 +7,7 @@ local M = {}
 ---@type Base46HLGroupsList
 M.override = {
   CursorLine = {
-    bg = "lightbg",
+    bg = "one_bg",
   },
   ["@function"] = { italic = true },
   ["@function.call"] = { italic = true },
