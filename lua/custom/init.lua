@@ -15,6 +15,9 @@ vim.o.fillchars = [[eob: ,fold: ,foldopen:󰤻,foldsep: ,foldclose:󰡌]]
 
 vim.wo.relativenumber = true
 vim.cmd "command! W write"
+vim.cmd [[
+set ignorecase smartcase
+]]
 
 if vim.g.neovide then
   -- Put anything you want to happen only in Neovide here
