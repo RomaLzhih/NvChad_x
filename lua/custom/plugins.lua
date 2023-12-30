@@ -82,9 +82,14 @@ local plugins = {
 
   -- NOTE: neoscroll.nvim
   {
-    "karb94/neoscroll.nvim",
+    "declancm/cinnamon.nvim",
     config = function()
-      require("neoscroll").setup {}
+      require("cinnamon").setup {
+        extra_keymaps = true,
+        override_keymaps = true,
+        max_length = 500,
+        -- scroll_limit = -1,
+      }
     end,
     lazy = false,
   },
