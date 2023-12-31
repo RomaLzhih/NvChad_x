@@ -67,7 +67,10 @@ M.general = {
   v = {
     ["<C-y>"] = { '"+y', "Copy to clipboard" },
     ["<C-p>"] = { '"+p', "Copy from clipboard" },
-    ["<leader>f"] = { "<cmd> FzfLua grep_visual <CR>", "fzf Rg search" },
+  },
+
+  t = {
+    ["<ESC>"] = { vim.api.nvim_replace_termcodes("<c-\\><c-n>", true, true, true), "escape terminal mode" },
   },
 }
 
