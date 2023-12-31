@@ -3,8 +3,6 @@ local overrides = require "custom.configs.overrides"
 ---@type NvPluginSpec[]
 local plugins = {
 
-  -- Override plugin definition options
-
   -- NOTE: nvim-lspconfig
   {
     "neovim/nvim-lspconfig",
@@ -28,7 +26,6 @@ local plugins = {
       require "custom.configs.lspconfig"
     end, -- Override to setup mason-lspconfig
   },
-
   -- NOTE: mason
   -- override plugin configs
   {
@@ -408,11 +405,13 @@ local plugins = {
     lazy = false,
   },
 
+  -- NOTE: rainbow_csv
   {
     "mechatroner/rainbow_csv",
     lazy = false,
   },
 
+  -- NOTE: better_escape
   {
     "max397574/better-escape.nvim",
     config = function()
@@ -421,6 +420,26 @@ local plugins = {
     lazy = false,
   },
 
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup {
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+      }
+    end,
+    lazy = true,
+  },
+
+  {
+    "zbirenbaum/copilot-cmp",
+    config = function()
+      require("copilot_cmp").setup()
+    end,
+    lazy = false,
+  },
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
