@@ -199,8 +199,8 @@ local plugins = {
           bash = { "beautysh" },
           shell = { "shfmt" },
           sh = { "shfmt" },
-          -- r = { "styler" },
-          -- rmd = { "styler" },
+          r = { "styler" },
+          rmd = { "styler" },
         },
         format_on_save = {
           -- These options will be passed to conform.format()
@@ -377,7 +377,7 @@ local plugins = {
     end,
   },
 
-  --NOTE: search wigh google
+  -- NOTE: search wigh google
   {
     "piersolenski/wtf.nvim",
     dependencies = {
@@ -420,6 +420,7 @@ local plugins = {
     lazy = false,
   },
 
+  -- NOTE: copilot
   {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
@@ -431,6 +432,8 @@ local plugins = {
       }
     end,
   },
+
+  -- NOTE: configure cmp with copilot
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
