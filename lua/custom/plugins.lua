@@ -199,8 +199,6 @@ local plugins = {
           bash = { "beautysh" },
           shell = { "shfmt" },
           sh = { "shfmt" },
-          r = { "styler" },
-          rmd = { "styler" },
         },
         format_on_save = {
           -- These options will be passed to conform.format()
