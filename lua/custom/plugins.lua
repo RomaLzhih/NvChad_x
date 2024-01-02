@@ -430,21 +430,28 @@ local plugins = {
         panel = { enabled = false },
       }
     end,
-    lazy = true,
   },
-
   {
-    "zbirenbaum/copilot-cmp",
-    config = function()
-      require("copilot_cmp").setup()
-    end,
-    lazy = false,
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      {
+        "zbirenbaum/copilot-cmp",
+        config = function()
+          require("copilot_cmp").setup()
+        end,
+      },
+    },
+    opts = {
+      sources = {
+        { name = "nvim_lsp" },
+        { name = "luasnip" },
+        { name = "buffer" },
+        { name = "nvim_lua" },
+        { name = "path" },
+        { name = "copilot" },
+      },
+    },
   },
-  -- To make a plugin not be loaded
-  -- {
-  --   "NvChad/nvim-colorizer.lua",
-  --   enabled = false
-  -- },
 }
 
 return plugins
