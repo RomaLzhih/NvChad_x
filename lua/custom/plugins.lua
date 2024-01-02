@@ -57,10 +57,10 @@ local plugins = {
   -- NOTE: telescope
   {
     "nvim-telescope/telescope.nvim",
-    -- enable = false,
     lazy = true,
   },
 
+  -- NOTE: indent
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
@@ -74,7 +74,6 @@ local plugins = {
     config = function()
       require("dressing").setup()
     end,
-    lazy = true,
   },
 
   -- NOTE: neoscroll.nvim

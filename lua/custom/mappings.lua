@@ -39,9 +39,6 @@ M.general = {
       "conform formatting",
     },
 
-    -- NOTE: operation
-    ["<C-u>"] = { "<C-r>", "Revert undo" },
-
     -- NOTE: fold
     ["<A-q>"] = { "zA", "Toggle all folding under cursor" },
 
