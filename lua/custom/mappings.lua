@@ -55,15 +55,9 @@ M.general = {
     ["<leader>ol"] = { "<cmd> Lspsaga outline <CR>", "lsp saga outline" },
     ["<leader>rn"] = { "<cmd> Lspsaga rename <CR>", "lsp saga rename" },
     ["<leader>wd"] = { "<cmd> Lspsaga show_workspace_diagnostics <CR>", "lsp saga rename" },
-  },
 
-  i = {
-    ["<C-f>"] = { "<ESC><C-f>", "exit to normal and format" },
-  },
-
-  v = {
-    ["<C-y>"] = { '"+y', "Copy to clipboard" },
-    ["<C-p>"] = { '"+p', "Copy from clipboard" },
+    ["<leader>id"] = { "<cmd> Neorg index <CR>", "Neorg open index" },
+    ["<leader>rt"] = { "<cmd> Neorg return <CR>", "Neorg return to work" },
   },
 
   t = {
