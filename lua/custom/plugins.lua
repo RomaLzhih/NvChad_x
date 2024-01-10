@@ -2,7 +2,10 @@ local overrides = require "custom.configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
-
+  {
+    "shaunsingh/nord.nvim",
+    lazy = false,
+  },
   -- NOTE: nvim-lspconfig
   {
     "neovim/nvim-lspconfig",
