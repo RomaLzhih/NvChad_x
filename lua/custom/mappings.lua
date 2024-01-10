@@ -56,8 +56,12 @@ M.general = {
     ["<leader>rn"] = { "<cmd> Lspsaga rename <CR>", "lsp saga rename" },
     ["<leader>wd"] = { "<cmd> Lspsaga show_workspace_diagnostics <CR>", "lsp saga rename" },
 
+    -- NOTE: Neorg
     ["<leader>id"] = { "<cmd> Neorg index <CR>", "Neorg open index" },
     ["<leader>rt"] = { "<cmd> Neorg return <CR>", "Neorg return to work" },
+
+    -- NOTE: telescope load custom colorscheme
+    ["<leader>cs"] = { "<cmd> Telescope colorscheme <CR>", "Telescope colorscheme" },
   },
 
   t = {

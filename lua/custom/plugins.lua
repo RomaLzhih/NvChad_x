@@ -6,6 +6,25 @@ local plugins = {
     "shaunsingh/nord.nvim",
     lazy = false,
   },
+
+  {
+    "AlexvZyl/nordic.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("nordic").setup()
+    end,
+  },
+
+  {
+    "morhetz/gruvbox",
+    config = function()
+      vim.g.gruvbox_contrast_dark = "medium"
+      vim.cmd.colorscheme "gruvbox"
+    end,
+    lazy = false,
+  },
+
   -- NOTE: nvim-lspconfig
   {
     "neovim/nvim-lspconfig",
@@ -29,6 +48,7 @@ local plugins = {
       require "custom.configs.lspconfig"
     end, -- Override to setup mason-lspconfig
   },
+
   -- NOTE: mason
   -- override plugin configs
   {
