@@ -8,6 +8,12 @@ local plugins = {
   },
 
   {
+
+    "sainnhe/gruvbox-material",
+    lazy = false,
+  },
+
+  {
     "ribru17/bamboo.nvim",
     lazy = false,
     priority = 1000,
