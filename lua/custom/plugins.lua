@@ -45,9 +45,21 @@ local plugins = {
     "morhetz/gruvbox",
     config = function()
       vim.g.gruvbox_contrast_dark = "medium"
-      vim.cmd.colorscheme "gruvbox"
+      -- vim.cmd.colorscheme "gruvbox"
     end,
     lazy = false,
+  },
+  {
+    "Yazeed1s/oh-lucy.nvim",
+    lazy = false,
+  },
+
+  {
+    "ramojus/mellifluous.nvim",
+    config = function()
+      require("mellifluous").setup { --[[...]]
+      } -- optional, see configuration section.
+    end,
   },
 
   -- NOTE: nvim-lspconfig
