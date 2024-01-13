@@ -70,6 +70,14 @@ M.base_16 = {
   -- base0D = "#81A1C1",
   -- base0E = "#81A1C1",
   -- base0F = "#B48EAD",
+  -- - base08 - Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
+  -- - base09 - Integers, Boolean, Constants, XML Attributes, Markup Link Url
+  -- - base0A - Classes, Markup Bold, Search Text Background
+  -- - base0B - Strings, Inherited Class, Markup Code, Diff Inserted
+  -- - base0C - Support, Regular Expressions, Escape Characters, Markup Quotes
+  -- - base0D - Functions, Methods, Attribute IDs, Headings
+  -- - base0E - Keywords, Storage, Selector, Markup Italic, Diff Changed
+  -- - base0F - Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
   base00 = "#2E3440",
   base01 = "#3B4252",
   base02 = "#434C5E",
@@ -82,7 +90,7 @@ M.base_16 = {
   base09 = "#B48EAD",
   base0A = "#81A1C1",
   base0B = "#A3BE8C",
-  base0C = "#81A1C1",
+  base0C = "#EBCB8B",
   base0D = "#88C0D0",
   base0E = "#81A1C1",
   base0F = "#B48EAD",
