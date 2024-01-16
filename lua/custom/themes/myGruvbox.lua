@@ -1,5 +1,6 @@
 -- Credits to original https://github.com/morhetz/gruvbox
--- This is modified version of it
+-- This is modified version based on the origin gruvbox theme in base46
+-- better base16
 
 local M = {}
 
@@ -37,14 +38,6 @@ M.base_30 = {
 }
 
 M.base_16 = {
-  -- - base08 - Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
-  -- - base09 - Integers, Boolean, Constants, XML Attributes, Markup Link Url
-  -- - base0A - Classes, Markup Bold, Search Text Background
-  -- - base0B - Strings, Inherited Class, Markup Code, Diff Inserted
-  -- - base0C - Support, Regular Expressions, Escape Characters, Markup Quotes
-  -- - base0D - Functions, Methods, Attribute IDs, Headings
-  -- - base0E - Keywords, Storage, Selector, Markup Italic, Diff Changed
-  -- - base0F - Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
   base00 = "#282828",
   base01 = "#3c3836",
   base02 = "#423e3c",
@@ -61,28 +54,11 @@ M.base_16 = {
   base0D = "#b8bb26",
   base0E = "#fb4943",
   base0F = "#d65d0e",
-
-  -- base00 = "#282828",
-  -- base01 = "#3c3836",
-  -- base02 = "#423e3c",
-  -- base03 = "#484442",
-  -- base04 = "#bdae93",
-  -- base05 = "#d5c4a1",
-  -- base06 = "#ebdbb2",
-  -- base07 = "#fbf1c7",
-  -- base08 = "#fb4934",
-  -- base09 = "#fe8019",
-  -- base0A = "#fabd2f",
-  -- base0B = "#b8bb26",
-  -- base0C = "#8ec07c",
-  -- base0D = "#83a598",
-  -- base0E = "#d3869b",
-  -- base0F = "#d65d0e",
 }
 
 M.type = "dark"
 
-M = require("base46").override_theme(M, "gruvbox")
+M = require("base46").override_theme(M, "myGruvbox")
 
 M.polish_hl = {
   Operator = {

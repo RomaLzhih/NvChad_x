@@ -17,30 +17,10 @@ local plugins = {
   },
 
   {
-    "ribru17/bamboo.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require("bamboo").setup {
-        -- optional configuration here
-      }
-    end,
-  },
-
-  {
     "EdenEast/nightfox.nvim",
     lazy = false,
     config = function()
       require("nightfox").setup()
-    end,
-  },
-
-  {
-    "AlexvZyl/nordic.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require("nordic").setup()
     end,
   },
 
@@ -52,17 +32,10 @@ local plugins = {
     end,
     lazy = false,
   },
+
   {
     "Yazeed1s/oh-lucy.nvim",
     lazy = false,
-  },
-
-  {
-    "ramojus/mellifluous.nvim",
-    config = function()
-      require("mellifluous").setup { --[[...]]
-      } -- optional, see configuration section.
-    end,
   },
 
   -- NOTE: nvim-lspconfig
