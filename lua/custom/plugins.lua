@@ -433,6 +433,19 @@ local plugins = {
     end,
   },
 
+  -- NOTE: Codium
+  {
+    "Exafunction/codeium.nvim",
+    cmd = "Codeium",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "hrsh7th/nvim-cmp",
+    },
+    config = function()
+      require("codeium").setup {}
+    end,
+  },
+
   -- NOTE: configure cmp with copilot
   {
     "hrsh7th/nvim-cmp",
@@ -452,6 +465,7 @@ local plugins = {
         { name = "nvim_lua" },
         { name = "path" },
         { name = "copilot" },
+        { name = "codeium" },
       },
     },
   },
