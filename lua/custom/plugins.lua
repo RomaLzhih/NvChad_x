@@ -264,6 +264,10 @@ local plugins = {
         bash = { "shellcheck" },
       }
 
+      lint.linters.clangtidy.args = {
+        "-extra-arg=-std=c++20",
+      }
+
       local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
       vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
         group = lint_augroup,
