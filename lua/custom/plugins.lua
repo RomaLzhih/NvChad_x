@@ -2,44 +2,13 @@ local overrides = require "custom.configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
+  -- NOTE: center buffer
   {
-    "shaunsingh/nord.nvim",
-    lazy = false,
-    init = function()
-      vim.g.nord_bold = false
-    end,
-  },
-
-  {
-    "rebelot/kanagawa.nvim",
-    lazy = false,
-  },
-
-  {
-
-    "sainnhe/gruvbox-material",
-    lazy = false,
-  },
-
-  {
-    "EdenEast/nightfox.nvim",
-    lazy = false,
+    "shortcuts/no-neck-pain.nvim",
     config = function()
-      require("nightfox").setup()
+      require("no-neck-pain").setup()
     end,
-  },
-
-  {
-    "morhetz/gruvbox",
-    config = function()
-      vim.g.gruvbox_contrast_dark = "medium"
-      -- vim.cmd.colorscheme "gruvbox"
-    end,
-    lazy = false,
-  },
-
-  {
-    "Yazeed1s/oh-lucy.nvim",
+    version = "*",
     lazy = false,
   },
 
@@ -530,32 +499,22 @@ local plugins = {
     end,
   },
 
-  -- NOTE: yanky
+  -- NOTE: Themes
   {
-    "gbprod/yanky.nvim",
-    dependencies = {
-      { "kkharji/sqlite.lua" },
-    },
-    opts = {
-      ring = { storage = "sqlite" },
-    },
-    config = function()
-      require("yanky").setup {}
+    "shaunsingh/nord.nvim",
+    lazy = false,
+    init = function()
+      vim.g.nord_bold = false
     end,
-    keys = {
-      {
-        "<leader>p",
-        function()
-          require("telescope").extensions.yank_history.yank_history {}
-        end,
-        desc = "Open Yank History",
-      },
-      { "y", "<Plug>(YankyYank)", mode = { "n", "x" }, desc = "Yank text" },
-      { "p", "<Plug>(YankyPutAfter)", mode = { "n", "x" }, desc = "Put yanked text after cursor" },
-      { "P", "<Plug>(YankyPutBefore)", mode = { "n", "x" }, desc = "Put yanked text before cursor" },
-      { "gp", "<Plug>(YankyGPutAfter)", mode = { "n", "x" }, desc = "Put yanked text after selection" },
-      { "gP", "<Plug>(YankyGPutBefore)", mode = { "n", "x" }, desc = "Put yanked text before selection" },
-    },
+  },
+
+  {
+    "morhetz/gruvbox",
+    config = function()
+      vim.g.gruvbox_contrast_dark = "medium"
+      -- vim.cmd.colorscheme "gruvbox"
+    end,
+    lazy = false,
   },
 }
 
