@@ -463,7 +463,7 @@ local plugins = {
           ["core.dirman"] = { -- Manages Neorg workspaces
             config = {
               workspaces = {
-                notes = "~/Dropbox/notes",
+                notes = "~/Dropbox/work-flow/notes",
               },
               default_workspace = "notes",
             },
