@@ -5,20 +5,52 @@
 --   command = "tabdo wincmd =",
 -- })
 --
+
+-- NOTE: terminal colors
 vim.o.termguicolors = true
--- UFO folding
+
+-- NOTE: UFO folding
 vim.o.foldcolumn = "1" -- '0' is not bad
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 vim.o.fillchars = [[eob: ,fold: ,foldopen:󰤻,foldsep: ,foldclose:󰡌]]
 
+-- NOTE: relative line number
 vim.wo.relativenumber = true
+
+-- NOTE: remap the :w
 vim.cmd "command! W write"
+
+-- NOTE: ignore the smartcase
 vim.cmd [[
 set ignorecase smartcase
 ]]
 
+-- NOTE: jump out of the bracket
+function EscapePair()
+  local closers = { ")", "]", "}", ">", "'", '"', "`", ",", "$" }
+  local line = vim.api.nvim_get_current_line()
+  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+  local after = line:sub(col + 1, -1)
+  local closer_col = #after + 1
+  local closer_i = nil
+  for i, closer in ipairs(closers) do
+    local cur_index, _ = after:find(closer)
+    if cur_index and (cur_index < closer_col) then
+      closer_col = cur_index
+      closer_i = i
+    end
+  end
+  if closer_i then
+    vim.api.nvim_win_set_cursor(0, { row, col + closer_col })
+  else
+    vim.api.nvim_win_set_cursor(0, { row, col + 1 })
+  end
+end
+vim.api.nvim_set_keymap("i", "<C-l>", "<cmd>lua EscapePair()<CR>", { noremap = true, silent = true })
+
+-- NOTE: neovide
 if vim.g.neovide then
   -- Put anything you want to happen only in Neovide here
   vim.o.guifont = "DankMono Nerd Font:h12"
