@@ -427,6 +427,7 @@ local plugins = {
     config = function()
       require("codeium").setup {}
     end,
+    lazy = false,
   },
 
   -- NOTE: configure cmp with copilot
