@@ -88,14 +88,6 @@ local plugins = {
     lazy = false,
   },
 
-  -- NOTE: dressing
-  {
-    "stevearc/dressing.nvim",
-    config = function()
-      require("dressing").setup()
-    end,
-  },
-
   -- NOTE: neoscroll.nvim
   {
     "declancm/cinnamon.nvim",
@@ -140,23 +132,6 @@ local plugins = {
   {
     "mg979/vim-visual-multi",
     lazy = false,
-  },
-
-  -- NOTE: tabout.nvim
-  {
-    "abecodes/tabout.nvim",
-    config = function()
-      require("tabout").setup()
-    end,
-    lazy = false,
-  },
-
-  -- NOTE: playground
-  {
-    "nvim-treesitter/playground",
-    config = function()
-      require("nvim-treesitter.configs").setup {}
-    end,
   },
 
   -- NOTE: todo-comments
@@ -355,25 +330,6 @@ local plugins = {
     end,
   },
 
-  -- NOTE: search wigh google
-  {
-    "piersolenski/wtf.nvim",
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-    },
-    opts = {},
-    keys = {
-      {
-        mode = { "n" },
-        "gW",
-        function()
-          require("wtf").search()
-        end,
-        desc = "Search diagnostic with Google",
-      },
-    },
-  },
-
   -- NOTE: mark
   {
     "chentoast/marks.nvim",
@@ -386,15 +342,6 @@ local plugins = {
   -- NOTE: rainbow_csv
   {
     "mechatroner/rainbow_csv",
-    lazy = false,
-  },
-
-  -- NOTE: better_escape
-  {
-    "max397574/better-escape.nvim",
-    config = function()
-      require("better_escape").setup()
-    end,
     lazy = false,
   },
 
@@ -427,7 +374,6 @@ local plugins = {
     config = function()
       require("codeium").setup {}
     end,
-    lazy = false,
   },
 
   -- NOTE: configure cmp with copilot
