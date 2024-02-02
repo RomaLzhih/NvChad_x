@@ -48,7 +48,7 @@ function EscapePair()
     vim.api.nvim_win_set_cursor(0, { row, col + 1 })
   end
 end
-vim.api.nvim_set_keymap("i", "<C-l>", "<cmd>lua EscapePair()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("i", "<C-d>", "<cmd>lua EscapePair()<CR>", { noremap = true, silent = true })
 
 -- NOTE: neovide
 if vim.g.neovide then
