@@ -2,6 +2,12 @@ local overrides = require "custom.configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
+  -- NOTE: detect indent
+  {
+    "tpope/vim-sleuth",
+    lazy = false,
+  },
+
   -- NOTE: center buffer
   {
     "shortcuts/no-neck-pain.nvim",
