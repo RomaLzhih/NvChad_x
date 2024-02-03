@@ -2,6 +2,18 @@ local overrides = require "custom.configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
+  -- NOTE: Cody
+  {
+    "sourcegraph/sg.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim", --[[ "nvim-telescope/telescope.nvim ]]
+    },
+
+    -- If you have a recent version of lazy.nvim, you don't need to add this!
+    build = "nvim -l build/init.lua",
+    lazy = false,
+  },
+
   -- NOTE: detect indent
   {
     "tpope/vim-sleuth",
@@ -403,6 +415,7 @@ local plugins = {
         { name = "path" },
         { name = "copilot" },
         { name = "codeium" },
+        { name = "cody" },
       },
     },
   },
