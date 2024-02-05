@@ -90,10 +90,10 @@ M.base_16 = {
   base09 = "#B48EAD",
   base0A = "#81A1C1",
   base0B = "#A3BE8C",
-  base0C = "#518EAC",
+  base0C = "#88C0D0",
   base0D = "#88C0D0",
-  base0E = "#EBCB8B",
-  base0F = "#B48EAD",
+  base0E = "#81A1C1",
+  base0F = "#EBCB8B",
 }
 
 M.polish_hl = {
