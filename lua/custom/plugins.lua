@@ -2,6 +2,12 @@ local overrides = require "custom.configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
   -- NOTE: detect indent
   {
     "tpope/vim-sleuth",
@@ -220,7 +226,7 @@ local plugins = {
 
       lint.linters_by_ft = {
         -- python = { "pylint" },
-        cpp = { "clangtidy", "cppcheck" },
+        cpp = { "clangtidy", "cpplint", "cppcheck" },
         bash = { "shellcheck" },
       }
 
