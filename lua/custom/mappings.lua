@@ -60,9 +60,9 @@ M.general = {
     ["<leader>cs"] = { "<cmd> Telescope colorscheme <CR>", "Telescope colorscheme" },
 
     -- NOTE: center buffer (zen mode)
-    ["<leader>zm"] = { "<cmd> NoNeckPain <CR>", "center buffer" },
-    ["<leader>zi"] = { "<cmd> NoNeckPainWidthUp <CR>", "Increase center margin" },
-    ["<leader>zd"] = { "<cmd> NoNeckPainWidthDown <CR>", "Decrease center margin" },
+    ["<leader>cm"] = { "<cmd> NoNeckPain <CR>", "center buffer" },
+    ["<leader>ci"] = { "<cmd> NoNeckPainWidthUp <CR>", "Increase center margin" },
+    ["<leader>cd"] = { "<cmd> NoNeckPainWidthDown <CR>", "Decrease center margin" },
   },
 
   t = {

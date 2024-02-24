@@ -5,8 +5,8 @@ local M = {}
 local highlights = require "custom.highlights"
 
 M.ui = {
-  theme = "myGruvboxMaterial",
-  theme_toggle = { "myGruvboxMaterial", "myGruvboxMaterial" },
+  theme = "github_light",
+  theme_toggle = { "github_light", "github_light" },
   hl_override = highlights.override,
   hl_add = highlights.add,
   statusline = {
