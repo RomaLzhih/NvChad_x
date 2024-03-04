@@ -3,10 +3,9 @@ local overrides = require "custom.configs.overrides"
 ---@type NvPluginSpec[]
 local plugins = {
   {
-    "folke/tokyonight.nvim",
+    "rose-pine/neovim",
+    name = "rose-pine",
     lazy = false,
-    priority = 1000,
-    opts = {},
   },
   -- NOTE: detect indent
   {
