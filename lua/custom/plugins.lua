@@ -2,11 +2,6 @@ local overrides = require "custom.configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
-  {
-    "rose-pine/neovim",
-    name = "rose-pine",
-    lazy = false,
-  },
   -- NOTE: detect indent
   {
     "tpope/vim-sleuth",
