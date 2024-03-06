@@ -64,6 +64,12 @@ M.base_16 = {
   base0F = "#524f67",
 }
 
+M.polish_hl = {
+  ["@function.method.call"] = { fg = M.base_30.cyan },
+  ["@property"] = { fg = M.base_30.cyan },
+  ["@constant"] = { fg = M.base_30.orange, italic = true },
+}
+
 M = require("base46").override_theme(M, "myRosepine")
 
 M.type = "dark"

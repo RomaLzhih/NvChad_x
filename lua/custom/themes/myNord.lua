@@ -53,23 +53,6 @@ M.base_16 = {
   -- base0D = "#EBCB8B", -- nord13 in palette
   -- base0E = "#A3BE8C", -- nord14 in palette
   -- base0F = "#B48EAD", -- nord15 in palette
-
-  --  base00 = "#2E3440",
-  -- base01 = "#3B4252",
-  -- base02 = "#434C5E",
-  -- base03 = "#4C566A",
-  -- base04 = "#D8DEE9",
-  -- base05 = "#E5E9F0",
-  -- base06 = "#ECEFF4",
-  -- base07 = "#8FBCBB",
-  -- base08 = "#88C0D0",
-  -- base09 = "#81A1C1",
-  -- base0A = "#88C0D0",
-  -- base0B = "#A3BE8C",
-  -- base0C = "#81A1C1",
-  -- base0D = "#81A1C1",
-  -- base0E = "#81A1C1",
-  -- base0F = "#B48EAD",
   -- - base08 - Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
   -- - base09 - Integers, Boolean, Constants, XML Attributes, Markup Link Url
   -- - base0A - Classes, Markup Bold, Search Text Background
@@ -97,6 +80,9 @@ M.base_16 = {
 }
 
 M.polish_hl = {
+  ["@constant"] = { fg = M.base_30.yellow },
+  ["@operator"] = { fg = M.base_30.nord_blue },
+  ["@property"] = { fg = M.base_30.teal, italic = true },
   ["@punctuation.bracket"] = { fg = M.base_16.base07 },
   ["@punctuation.delimiter"] = { fg = M.base_30.white },
 }

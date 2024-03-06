@@ -55,6 +55,16 @@ M.base_16 = {
   base0F = "#e78a4e",
 }
 
+M.polish_hl = {
+  ["@module"] = { fg = M.base_30.white },
+  ["@constant"] = { fg = M.base_16.base09 },
+  ["@punctuation.delimiter"] = { fg = M.base_16.base06 },
+  ["@punctuation.bracket"] = { fg = M.base_16.base06 },
+  ["@variable.parameter"] = { fg = M.base_30.white },
+  ["@operator"] = { fg = M.base_30.white },
+  ["@variable"] = { fg = M.base_30.white },
+}
+
 M.type = "dark"
 
 M = require("base46").override_theme(M, "myGruvboxMaterial")

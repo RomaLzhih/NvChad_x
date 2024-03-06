@@ -24,6 +24,7 @@ M.override = {
   -- ["@parameter"] = { italic = true },
   -- ["@property"] = { italic = true },
   ["@variable.builtin"] = { italic = true },
+  ["@variable.parameter"] = { italic = true },
   Repeat = { italic = true },
   Type = { italic = true },
   Comment = { italic = true },
