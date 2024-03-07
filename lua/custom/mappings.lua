@@ -27,13 +27,13 @@ M.general = {
     },
 
     -- NOTE: formatting
-    ["<C-f>"] = {
-      function()
-        -- vim.lsp.buf.format { async = true }
-        require("conform").format { async = true, lsp_fallback = true }
-      end,
-      "conform formatting",
-    },
+    -- ["<C-f>"] = {
+    --   function()
+    --     -- vim.lsp.buf.format { async = true }
+    --     require("conform").format { async = true, lsp_fallback = true }
+    --   end,
+    --   "conform formatting",
+    -- },
 
     -- NOTE: fold
     ["<A-q>"] = { "zA", "Toggle all folding under cursor" },
