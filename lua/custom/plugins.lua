@@ -8,8 +8,8 @@ local plugins = {
       local before = require "before"
       before.setup()
 
-      vim.keymap.set("n", "<C-f>", before.jump_to_last_edit, { "jump_to_last_edit" })
-      vim.keymap.set("n", "<C-b>", before.jump_to_next_edit, { "jump_to_next_edit" })
+      vim.keymap.set("n", "<C-f>", before.jump_to_last_edit, {})
+      vim.keymap.set("n", "<C-b>", before.jump_to_next_edit, {})
     end,
     lazy = false,
   },
