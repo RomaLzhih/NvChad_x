@@ -2,34 +2,16 @@ local overrides = require "custom.configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
+  -- NOTE: before.nvim
   {
     "bloznelis/before.nvim",
+    cmd = "Before",
     config = function()
       local before = require "before"
       before.setup()
-
-      vim.keymap.set("n", "<C-f>", before.jump_to_last_edit, {})
-      vim.keymap.set("n", "<C-b>", before.jump_to_next_edit, {})
     end,
-    lazy = false,
   },
-  {
-    "nordtheme/vim",
-    lazy = false,
-    propritery = 1000,
-  },
-  {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {},
-  },
-  {
-    "rose-pine/neovim",
-    name = "rose-pine",
-    lazy = false,
-  },
-  --
+
   -- NOTE: detect indent
   {
     "tpope/vim-sleuth",
@@ -39,11 +21,12 @@ local plugins = {
   -- NOTE: center buffer
   {
     "shortcuts/no-neck-pain.nvim",
+    cmd = "NoNeckPain",
     config = function()
       require("no-neck-pain").setup()
     end,
     version = "*",
-    lazy = false,
+    lazy = true,
   },
 
   -- NOTE: nvim-lspconfig
@@ -59,6 +42,7 @@ local plugins = {
       },
       {
         "nvimdev/lspsaga.nvim",
+        cmd = "Lspsaga",
         config = function()
           require("lspsaga").setup {}
         end,
@@ -87,13 +71,6 @@ local plugins = {
         },
       }
     end,
-    init = function()
-      vim.keymap.set("n", "<C-A-h>", [[<cmd>lua require("tmux").move_left()<cr>]])
-      vim.keymap.set("n", "<C-A-j>", [[<cmd>lua require("tmux").move_bottom()<cr>]])
-      vim.keymap.set("n", "<C-A-k>", [[<cmd>lua require("tmux").move_top()<cr>]])
-      vim.keymap.set("n", "<C-A-l>", [[<cmd>lua require("tmux").move_right()<cr>]])
-    end,
-    lazy = false,
   },
 
   -- NOTE: nvim-treesitter
@@ -296,7 +273,7 @@ local plugins = {
         hop.hint_char1 { direction = directions.BEFORE_CURSOR, hint_offset = 1, current_line_only = true }
       end, { remap = true })
     end,
-    lazy = false,
+    lazy = true,
   },
 
   -- NOTE: Nvim-R
@@ -376,7 +353,6 @@ local plugins = {
   -- NOTE: rainbow_csv
   {
     "mechatroner/rainbow_csv",
-    lazy = false,
   },
 
   -- NOTE: copilot
@@ -494,20 +470,27 @@ local plugins = {
 
   -- NOTE: Themes
   {
-    "shaunsingh/nord.nvim",
-    lazy = false,
-    init = function()
-      vim.g.nord_bold = false
-    end,
-  },
-
-  {
     "morhetz/gruvbox",
     config = function()
       vim.g.gruvbox_contrast_dark = "medium"
       -- vim.cmd.colorscheme "gruvbox"
     end,
-    lazy = false,
+  },
+
+  {
+    "nordtheme/vim",
+    propritery = 1000,
+  },
+
+  {
+    "folke/tokyonight.nvim",
+    priority = 1000,
+    opts = {},
+  },
+
+  {
+    "rose-pine/neovim",
+    name = "rose-pine",
   },
 }
 

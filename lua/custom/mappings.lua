@@ -18,6 +18,32 @@ M.general = {
     ["<A-e>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
     ["<leader>pl"] = { "<cmd> set spell! <CR>", "Toggle spell check" },
 
+    -- NOTE: tmux nvim
+    ["C-A-h"] = {
+      function()
+        require("tmux").move_left()
+      end,
+      "Move left",
+    },
+    ["C-A-j"] = {
+      function()
+        require("tmux").move_bottom()
+      end,
+      "Move bottom",
+    },
+    ["C-A-k"] = {
+      function()
+        require("tmux").move_top()
+      end,
+      "Move top",
+    },
+    ["C-A-l"] = {
+      function()
+        require("tmux").move_right()
+      end,
+      "Move right",
+    },
+
     -- NOTE: Nvterm
     ["<A-x>"] = {
       function()
@@ -27,13 +53,28 @@ M.general = {
     },
 
     -- NOTE: formatting
-    -- ["<C-f>"] = {
-    --   function()
-    --     -- vim.lsp.buf.format { async = true }
-    --     require("conform").format { async = true, lsp_fallback = true }
-    --   end,
-    --   "conform formatting",
-    -- },
+    ["<leader>fm"] = {
+      function()
+        -- vim.lsp.buf.format { async = true }
+        require("conform").format { async = true, lsp_fallback = true }
+      end,
+      "conform formatting",
+    },
+
+    -- NOTE: trace back/forward
+    ["<C-f>"] = {
+      function()
+        require("before").jump_to_last_edit()
+      end,
+      "Jump to last edit",
+    },
+
+    ["<C-b>"] = {
+      function()
+        require("before").jump_to_next_edit()
+      end,
+      "Jump to last edit",
+    },
 
     -- NOTE: linting
     ["<leader>tl"] = {
@@ -49,7 +90,7 @@ M.general = {
         require("lint").linters_by_ft.cpp = {}
         require("lint").try_lint()
       end,
-      "Linting all",
+      "Un-linting",
     },
 
     -- NOTE: fold
@@ -78,8 +119,8 @@ M.general = {
 
     -- NOTE: center buffer (zen mode)
     ["<leader>cm"] = { "<cmd> NoNeckPain <CR>", "center buffer" },
-    ["<leader>ci"] = { "<cmd> NoNeckPainWidthUp <CR>", "Increase center margin" },
-    ["<leader>cd"] = { "<cmd> NoNeckPainWidthDown <CR>", "Decrease center margin" },
+    -- ["<leader>ci"] = { "<cmd> NoNeckPainWidthUp <CR>", "Increase center margin" },
+    -- ["<leader>cd"] = { "<cmd> NoNeckPainWidthDown <CR>", "Decrease center margin" },
   },
 
   t = {
