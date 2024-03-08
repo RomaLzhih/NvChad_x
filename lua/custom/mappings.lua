@@ -35,6 +35,23 @@ M.general = {
     --   "conform formatting",
     -- },
 
+    -- NOTE: linting
+    ["<leader>tl"] = {
+      function()
+        require("lint").linters_by_ft.cpp = { "clang-tidy", "cpplint", "cppcheck" }
+        require("lint").try_lint()
+      end,
+      "Linting",
+    },
+
+    ["<leader>ul"] = {
+      function()
+        require("lint").linters_by_ft.cpp = {}
+        require("lint").try_lint()
+      end,
+      "Linting all",
+    },
+
     -- NOTE: fold
     ["<A-q>"] = { "zA", "Toggle all folding under cursor" },
 
