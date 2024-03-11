@@ -71,6 +71,13 @@ local plugins = {
         },
       }
     end,
+    init = function()
+      vim.keymap.set("n", "<C-A-h>", [[<cmd>lua require("tmux").move_left()<cr>]])
+      vim.keymap.set("n", "<C-A-j>", [[<cmd>lua require("tmux").move_bottom()<cr>]])
+      vim.keymap.set("n", "<C-A-k>", [[<cmd>lua require("tmux").move_top()<cr>]])
+      vim.keymap.set("n", "<C-A-l>", [[<cmd>lua require("tmux").move_right()<cr>]])
+    end,
+    lazy = false,
   },
 
   -- NOTE: nvim-treesitter
@@ -407,7 +414,13 @@ local plugins = {
         { name = "path" },
         { name = "copilot" },
         { name = "codeium" },
-        { name = "cody" },
+      },
+      mapping = {
+        ["<CR>"] = {},
+        ["<C-CR>"] = require("cmp").mapping.confirm {
+          behavior = require("cmp").ConfirmBehavior.Insert,
+          select = true,
+        },
       },
     },
   },

@@ -18,32 +18,6 @@ M.general = {
     ["<A-e>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
     ["<leader>pl"] = { "<cmd> set spell! <CR>", "Toggle spell check" },
 
-    -- NOTE: tmux nvim
-    ["C-A-h"] = {
-      function()
-        require("tmux").move_left()
-      end,
-      "Move left",
-    },
-    ["C-A-j"] = {
-      function()
-        require("tmux").move_bottom()
-      end,
-      "Move bottom",
-    },
-    ["C-A-k"] = {
-      function()
-        require("tmux").move_top()
-      end,
-      "Move top",
-    },
-    ["C-A-l"] = {
-      function()
-        require("tmux").move_right()
-      end,
-      "Move right",
-    },
-
     -- NOTE: Nvterm
     ["<A-x>"] = {
       function()
