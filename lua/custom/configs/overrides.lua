@@ -40,7 +40,8 @@ M.mason = {
     "pyright",
     "shfmt",
     "ltex-ls",
-    -- "r_language_server",
+    "r_language_server",
+    "shellcheck",
   },
 }
 
