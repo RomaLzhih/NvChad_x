@@ -231,7 +231,7 @@ local plugins = {
       local lint = require "lint"
 
       lint.linters_by_ft = {
-        -- python = { "pylint" },
+        python = { "pylint" },
         cpp = { "clangtidy", "cpplint", "cppcheck" },
         bash = { "shellcheck" },
       }
