@@ -415,13 +415,6 @@ local plugins = {
         { name = "copilot" },
         { name = "codeium" },
       },
-      mapping = {
-        ["<CR>"] = {},
-        ["<C-CR>"] = require("cmp").mapping.confirm {
-          behavior = require("cmp").ConfirmBehavior.Insert,
-          select = true,
-        },
-      },
     },
   },
 
