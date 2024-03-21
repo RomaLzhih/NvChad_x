@@ -19,7 +19,7 @@ M.general = {
     ["<leader>pl"] = { "<cmd> set spell! <CR>", "Toggle spell check" },
 
     -- NOTE: Nvterm
-    ["<A-x>"] = {
+    ["<A-w>"] = {
       function()
         require("nvterm.terminal").toggle "horizontal"
       end,
@@ -142,10 +142,6 @@ M.general = {
       end,
       "harpoon next",
     },
-  },
-
-  t = {
-    ["<ESC>"] = { vim.api.nvim_replace_termcodes("<c-\\><c-n>", true, true, true), "escape terminal mode" },
   },
 }
 
