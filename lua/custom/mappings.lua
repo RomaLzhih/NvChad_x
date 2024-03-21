@@ -93,8 +93,55 @@ M.general = {
 
     -- NOTE: center buffer (zen mode)
     ["<leader>cm"] = { "<cmd> NoNeckPain <CR>", "center buffer" },
-    -- ["<leader>ci"] = { "<cmd> NoNeckPainWidthUp <CR>", "Increase center margin" },
-    -- ["<leader>cd"] = { "<cmd> NoNeckPainWidthDown <CR>", "Decrease center margin" },
+
+    ["<leader>ha"] = {
+      function()
+        require("harpoon"):list():append()
+      end,
+      "harpoon add",
+    },
+    ["<leader>hm"] = {
+      function()
+        require("harpoon").ui:toggle_quick_menu(require("harpoon"):list())
+      end,
+      "harpoon list",
+    },
+    ["<leader>hq"] = {
+      function()
+        require("harpoon"):list():select(1)
+      end,
+      "harpoon select 1",
+    },
+    ["<leader>hw"] = {
+      function()
+        require("harpoon"):list():select(2)
+      end,
+      "harpoon select 2",
+    },
+    ["<leader>he"] = {
+      function()
+        require("harpoon"):list():select(3)
+      end,
+      "harpoon select 3",
+    },
+    ["<leader>hr"] = {
+      function()
+        require("harpoon"):list():select(4)
+      end,
+      "harpoon select 4",
+    },
+    ["<C-A-p>"] = {
+      function()
+        require("harpoon"):list():prev()
+      end,
+      "harpoon previous",
+    },
+    ["<C-A-n>"] = {
+      function()
+        require("harpoon"):list():next()
+      end,
+      "harpoon next",
+    },
   },
 
   t = {

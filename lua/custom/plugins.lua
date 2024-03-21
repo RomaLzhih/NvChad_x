@@ -2,6 +2,16 @@ local overrides = require "custom.configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
+  -- NOTE: harpoon
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
+    config = function()
+      require "configs.harpoon"
+    end,
+  },
+
   -- NOTE: before.nvim
   {
     "bloznelis/before.nvim",
@@ -33,13 +43,6 @@ local plugins = {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      -- format & linting
-      {
-        "nvimtools/none-ls.nvim",
-        config = function()
-          require "custom.configs.null-ls"
-        end,
-      },
       {
         "nvimdev/lspsaga.nvim",
         cmd = "Lspsaga",
