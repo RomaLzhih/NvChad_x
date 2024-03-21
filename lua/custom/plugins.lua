@@ -184,11 +184,9 @@ local plugins = {
       },
     },
     event = "BufReadPost",
-    opts = {
-      provider_selector = function()
-        return { "treesitter", "indent" }
-      end,
-    },
+    config = function()
+      require("ufo").setup()
+    end,
 
     init = function()
       vim.keymap.set("n", "zR", function()
@@ -197,6 +195,18 @@ local plugins = {
       vim.keymap.set("n", "zM", function()
         require("ufo").closeAllFolds()
       end)
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities.textDocument.foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true,
+      }
+      local language_servers = require("lspconfig").util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
+      for _, ls in ipairs(language_servers) do
+        require("lspconfig")[ls].setup {
+          capabilities = capabilities,
+          -- you can add other fields for setting up lsp server in this table
+        }
+      end
     end,
   },
 
